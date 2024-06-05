@@ -91,7 +91,7 @@ struct LoginOrSignUpView: View {
                             Spacer()
                             Text("Continue")
                                 .font(.title3)
-                                .foregroundStyle(Color.text)
+                                .foregroundStyle(.white)
                                 .font(.subheadline)
                                 .fontWeight(.bold)
                             Spacer()

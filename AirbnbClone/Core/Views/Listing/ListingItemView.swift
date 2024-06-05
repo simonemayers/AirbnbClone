@@ -60,8 +60,9 @@ struct ListingItemView: View {
                         .resizable()
                         .scaledToFit()
                         .frame(width: 35,height: 35)
-                        .foregroundColor(Color.text)
+                        .foregroundColor(.white)
                         .padding()
+                        .opacity(/*@START_MENU_TOKEN@*/0.8/*@END_MENU_TOKEN@*/)
                 }
             }
        
