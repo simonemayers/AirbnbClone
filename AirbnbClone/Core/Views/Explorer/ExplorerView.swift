@@ -2,7 +2,7 @@
 //  Explorer.swift
 //  AirbnbClone
 //
-//  Created by Simone Mayers  on 28/05/2024.
+//  Created by Simone Mayers on 28/05/2024.
 //
 
 import SwiftUI

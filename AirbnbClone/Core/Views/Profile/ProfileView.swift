@@ -2,7 +2,7 @@
 //  ProfileView.swift
 //  AirbnbClone
 //
-//  Created by Simone Mayers  on 29/05/2024.
+//  Created by Simone Mayers on 29/05/2024.
 //
 
 import SwiftUI
