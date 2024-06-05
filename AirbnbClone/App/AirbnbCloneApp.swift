@@ -2,7 +2,7 @@
 //  AirbnbCloneApp.swift
 //  AirbnbClone
 //
-//  Created by Esse Jacques  on 28/05/2024.
+//  Created by Simone Mayers  on 28/05/2024.
 //
 
 import SwiftUI
