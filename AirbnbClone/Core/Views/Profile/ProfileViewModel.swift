@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 class ProfileViewModel: ObservableObject {
+
     
     struct SettingsItem: Identifiable, Hashable {
         let id = UUID()

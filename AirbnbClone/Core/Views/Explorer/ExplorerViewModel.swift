@@ -12,14 +12,26 @@ import Combine
 class ExplorerViewModel : ObservableObject {
     
     @Published var listings = [Listing]()
-    @Published var trip: Trip
+    @Published var trip = Trip(
+        startDate: Date().tomorrow,
+        endDate: Date().nextWeek,
+        destination: "",
+        guestCount: 0
+        )
     
     private let service: ExploreService
     private var listingsCopy = [Listing]()
+    @Published var selectedType = ""
+    @Published var isShowingExplorerView = true
 
     init (service : ExploreService) {
         self.service = service
-        self.trip = Trip(startDate: Date().tomorrow, endDate: Date().nextWeek, destination: "", guestCount: 0)
+//        self.trip = Trip(
+//            startDate: Date().tomorrow,
+//            endDate: Date().nextWeek,
+//            destination: "",
+//            guestCount: 0
+//        )
         
         
         Task { await fetchListings() }
@@ -51,7 +63,28 @@ class ExplorerViewModel : ObservableObject {
         self.listings = (filteredListings.isEmpty && trip.destination.isEmpty) ? listingsCopy : filteredListings
     }
     
-
+    func updateListingForType(){
+        
+        //        if !selectedType.isEmpty {
+        //            let filteredListings = listings.filter({
+        //                $0.type.description.lowercased().contains(selectedType.lowercased())
+        //            })
+        //        }
+        
+        
+        if selectedType.isEmpty {
+            self.listings = listingsCopy
+        } else {
+            let filteredListings = listingsCopy.filter({
+                $0.type.description.lowercased().contains(selectedType.lowercased())
+            })
+            self.listings = filteredListings
+            
+            
+        }
+        
+    }
+    
 }
 
 

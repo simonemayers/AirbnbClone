@@ -12,12 +12,14 @@ import WrappingHStack
 struct EmptyExplorerView: View {
     
     @ObservedObject var vm: ExplorerViewModel
+    @State var isShowingExplorerView: Bool
     
     var body: some View {
         VStack(spacing: 20){
-            Spacer()
+
             Text("No exact matches")
                 .fontWeight(.bold)
+                .padding(.top, 50)
             
             Divider()
                 .overlay(Color.text)
@@ -28,21 +30,25 @@ struct EmptyExplorerView: View {
             WrappingHStack(lineSpacing: 15){
                 Button("Clear Destination") {
                     vm.clearSearchView()
+                    isShowingExplorerView = false
                 }
                 .frame(width: 140)
                 
                 Button("Remove Dates"){
                     vm.clearSearchView()
+                    isShowingExplorerView = false
                 }
                 .frame(width: 120)
                 
                 Button("Clear Guests"){
                     vm.clearSearchView()
+                    isShowingExplorerView = false
                 }
                 .frame(width: 110)
                 
                 Button("Clear All") {
                     vm.clearSearchView()
+                    isShowingExplorerView = false
                 }
                 .frame(width: 80)
             }
@@ -60,5 +66,5 @@ struct EmptyExplorerView: View {
 }
 
 #Preview {
-    EmptyExplorerView(vm: ExplorerViewModel(service: ExploreService()))
+    EmptyExplorerView(vm: ExplorerViewModel(service: ExploreService()), isShowingExplorerView: true)
 }

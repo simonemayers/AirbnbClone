@@ -50,7 +50,7 @@ struct LoginOrSignUpView: View {
                             }label: {
                                 VStack (alignment: .leading){
                                     Text("Country/Region").font(.footnote).foregroundStyle(.gray)
-                                   Text("United States (+1)").foregroundColor(.black)
+                                    Text("United States (+1)").foregroundColor(Color.text)
                                 }.padding()
                                 Spacer()
                                 Image(systemName: "chevron.down")

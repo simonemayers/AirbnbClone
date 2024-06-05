@@ -9,20 +9,18 @@ import Foundation
 import SwiftUI
 
 struct ProfileOptionsView: View {
-    @ObservedObject var vm: ProfileViewModel
-    
+    let item: ProfileViewModel.SettingsItem
     var body: some View {
         HStack {
             
             HStack() {
                 
-                Image(systemName: vm.paramsSettings[0].iconName)
-                    .resizable()
+                Image(systemName: item.iconName)
                     .frame(width: 25, height: 25)
                     .foregroundStyle(Color.text)
                     .padding(.trailing, 8)
                 
-                Text(vm.paramsSettings[0].title)
+                Text(item.title)
                     .font(.title3)
                     .foregroundStyle(Color.text)
             }

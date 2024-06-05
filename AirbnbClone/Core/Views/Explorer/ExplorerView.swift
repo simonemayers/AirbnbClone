@@ -25,12 +25,15 @@ struct ExplorerView: View {
                                 showDestinationSearchView.toggle()
                             }
                         }
-                    CategoryCarouselView()
+ 
+                    CategoryCarouselView(vm: vm)
+
+                    
                     ScrollView{
                         
                         LazyVStack (spacing: 32){
                             if(vm.listings.isEmpty) {
-                                EmptyExplorerView(vm: vm)
+                                EmptyExplorerView(vm: vm, isShowingExplorerView: false)
                             } else{
                                 ForEach(vm.listings) { listing in
                                     NavigationLink(value: listing ){
@@ -47,7 +50,7 @@ struct ExplorerView: View {
                         
 //                            .navigationBarBackButtonHidden()
                         
-                }
+                    }
                 }
             }
             

@@ -34,6 +34,7 @@ let categories: [Category] = [
 
 struct CategoryCarouselView: View {
     @State private var selectedCategory: Category?
+    @ObservedObject var vm: ExplorerViewModel
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: true) {
@@ -43,9 +44,13 @@ struct CategoryCarouselView: View {
                         icon: category.iconName,
                         title: category.title,
                         isActive: category == selectedCategory
+                        
                     )
                         .onTapGesture {
                             selectedCategory = category
+                            vm.selectedType = category.title
+                            vm.updateListingForType()
+                            vm.isShowingExplorerView = true
                         }
                         
                 }
@@ -53,13 +58,16 @@ struct CategoryCarouselView: View {
             .padding()
             .scrollTargetLayout()
         }
+        .scrollClipDisabled()
         .scrollTargetBehavior(.paging)
-        .scrollPosition(id: $selectedCategory)    
+
+//        .scrollPosition(id: $selectedCategory)
+        
     }
 }
 
 
 
 #Preview {
-    CategoryCarouselView()
+    CategoryCarouselView(vm: ExplorerViewModel(service: ExploreService()))
 }

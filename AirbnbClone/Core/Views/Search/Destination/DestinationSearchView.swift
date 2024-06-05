@@ -49,7 +49,12 @@ struct DestinationSearchView: View {
                         DestinationSearchBox(vm: vm, show: $show)
                     }
                 }else {
-                    CollapsePickerView(title: "Where to?", description: "add destination")
+                    if(vm.trip.destination.isEmpty) {
+                        CollapsePickerView(title: "Where to?", description: "add destination")
+                    } else {
+                        CollapsePickerView(title: "Where to?", description: vm.trip.destination)
+                    }
+                    
                   
                 }
             }
@@ -67,11 +72,12 @@ struct DestinationSearchView: View {
                         
                         Spacer()
                         
-                        DatePickerView(startDate: $vm.trip.startDate, endDate: $vm.trip.endDate)
+                        DatePickerView(vm: vm)
                     }
                     
                 } else {
-                    CollapsePickerView(title: "When", description: "add date ").padding(.vertical)
+                    CollapsePickerView(title: "When", description: "\(vm.trip.startDate.formatted(date: .abbreviated, time: .omitted)) - \(vm.trip.endDate.formatted(date: .abbreviated, time: .omitted))")
+                        .padding(.vertical)
                 }
             }
             .modifier(CollapsePickerViewModifier())

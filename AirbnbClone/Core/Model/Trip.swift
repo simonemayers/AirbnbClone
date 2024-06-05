@@ -15,8 +15,8 @@ class Trip: ObservableObject {
     @Published var guestCount: Int
     
     init(startDate: Date, endDate: Date, destination: String, guestCount: Int) {
-        self.startDate = startDate
-        self.endDate = endDate
+        self.startDate = DateFormatter.customDate.date(from: DateFormatter.customDate.string(from: startDate))!
+        self.endDate = DateFormatter.customDate.date(from: DateFormatter.customDate.string(from: endDate))!
         self.destination = destination
         self.guestCount = guestCount
     }

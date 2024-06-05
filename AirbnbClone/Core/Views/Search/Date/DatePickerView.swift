@@ -9,30 +9,30 @@ import Foundation
 import SwiftUI
 
 struct DatePickerView: View {
-    @Binding var startDate: Date
-    @Binding var endDate: Date
+
+    @ObservedObject var vm : ExplorerViewModel
 
     var body: some View {
         VStack {
-            DatePicker("From", selection: $startDate, in: Date()...Date().nextYear, displayedComponents: .date)
+            
+            DatePicker("From", selection: $vm.trip.startDate, in: Date()...Date().nextYear, displayedComponents: .date)
                 .datePickerStyle(CompactDatePickerStyle())
+                .padding()
+                .onTapGesture {
+                }
             
             Divider()
-            DatePicker("To", selection: $endDate, in: Date()...Date().nextYear, displayedComponents: .date)
+
+            DatePicker("To", selection: $vm.trip.endDate, in: Date()...Date().nextYear, displayedComponents: .date)
                 .datePickerStyle(CompactDatePickerStyle())
+                .padding()
                 
         }
-        .onAppear{
-            startDate = DateFormatter.customDate.date(from: DateFormatter.customDate.string(from: startDate)) ?? startDate
-            
-            endDate = DateFormatter.customDate.date(from: DateFormatter.customDate.string(from: endDate)) ?? endDate
-        }
-        
-        
     }
 }
 
 
 
 #Preview {
-    DatePickerView(startDate: .constant(Date()), endDate: .constant(Date().addingTimeInterval(86400)))}
+    DatePickerView(vm: ExplorerViewModel(service: ExploreService()))
+}
